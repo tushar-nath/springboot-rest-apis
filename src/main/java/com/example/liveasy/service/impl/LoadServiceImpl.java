@@ -61,4 +61,44 @@ public class LoadServiceImpl implements LoadService {
         return optionalLoad.get();
     }
 
+    @Override
+    public String updateLoad(Long loadId, LoadDto loadDto) {
+        final Optional<Load> optionalLoad = this.loadRepository.findByLoadId(loadId);
+        if(!optionalLoad.isPresent()) {
+            throw new IllegalArgumentException("Load for the given LoadId not found.");
+        }
+
+        final Date date;
+        try {
+            date = new SimpleDateFormat("dd-MM-yyyy").parse(loadDto.getDate());
+        } catch (Exception exception) {
+            throw new IllegalArgumentException("Date format error");
+        }
+
+        final Load load = optionalLoad.get();
+        load.setLoadingPoint(loadDto.getLoadingPoint());
+        load.setUnloadingPoint(loadDto.getUnloadingPoint());
+        load.setProductType(loadDto.getProductType());
+        load.setTruckType(loadDto.getTruckType());
+        load.setNoOfTrucks(loadDto.getNoOfTrucks());
+        load.setWeight(loadDto.getWeight());
+        load.setComment(loadDto.getComment());
+        load.setDate(date);
+        loadRepository.save(load);
+        return "Load details successfully updated.";
+    }
+
+    @Override
+    public String deleteLoad(Long loadId) {
+        final Optional<Load> optionalLoad = this.loadRepository.findByLoadId(loadId);
+        if(!optionalLoad.isPresent()) {
+            throw new IllegalArgumentException("Load for the given LoadId not found.");
+        }
+
+        final Load load = optionalLoad.get();
+        loadRepository.delete(load);
+
+        return "Load details successfully deleted.";
+    }
+
 }

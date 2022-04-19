@@ -13,4 +13,7 @@ public interface LoadService {
 
     Load getLoad (final Long loadId);
 
+    String updateLoad (final Long loadId, final LoadDto loadDto);
+
+    String deleteLoad (final Long loadId);
 }

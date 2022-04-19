@@ -36,8 +36,20 @@ public class loadController {
 
     //Get load details with a load id
     @GetMapping("/load/{loadId}")
-    public ResponseEntity<Load> getLoad (@PathVariable String loadId) {
+    public ResponseEntity<Load> getLoad (@PathVariable final String loadId) {
         return new ResponseEntity<>(this.loadService.getLoad(Long.parseLong(loadId)), HttpStatus.OK);
+    }
+
+    //Update load details
+    @PutMapping("/load/{loadId}")
+    public ResponseEntity<String> updateLoad (@PathVariable final String loadId, @RequestBody final LoadDto loadDto) {
+        return new ResponseEntity<>(this.loadService.updateLoad(Long.parseLong(loadId), loadDto), HttpStatus.OK);
+    }
+
+    //Delete load details
+    @DeleteMapping("/load/{loadId}")
+    public ResponseEntity<String> deleteLoad (@PathVariable final String loadId) {
+        return new ResponseEntity<>(this.loadService.deleteLoad(Long.parseLong(loadId)), HttpStatus.OK);
     }
 
 }
