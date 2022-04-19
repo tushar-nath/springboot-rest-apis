@@ -56,7 +56,7 @@ GET /api/load/{loadId}
 Response : Load details with the specific loadId.
 ```
 
-### Update a load
+### Update load by loadId
 
 ```
 PUT /api/load/{loadId}
