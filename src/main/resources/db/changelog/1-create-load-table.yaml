@@ -1,0 +1,44 @@
+databaseChangeLog:
+  - changeSet:
+      id: TN1
+      author: Tushar
+      comment: Create load table
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: load_pk
+                  name: load_id
+                  type: BIGSERIAL
+              - column:
+                  name: loading_point
+                  type: VARCHAR
+              - column:
+                  name: unloading_point
+                  type: VARCHAR
+              - column:
+                  name: product_type
+                  type: VARCHAR
+              - column:
+                  name: truck_type
+                  type: VARCHAR
+              - column:
+                  name: no_of_trucks
+                  type: BIGSERIAL
+              - column:
+                  name: weight
+                  type: BIGSERIAL
+              - column:
+                  name: comment
+                  type: VARCHAR
+              - column:
+                  name: shipper_id
+                  type: VARCHAR
+              - column:
+                  name: date
+                  type: date
+            remarks: This table stores load details
+            tableName: load

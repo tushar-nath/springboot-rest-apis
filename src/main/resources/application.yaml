@@ -1,0 +1,24 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: load-application-service
+  datasource:
+    url: jdbc:postgresql://localhost:5432/load_db
+    username: postgres
+    password: postgres.123
+    initialization-mode: always
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        jdbc:
+          lob:
+            non_contextual_creation: true
+  liquibase: #liquibase changelog properties
+    enabled: true
+    change-log: classpath:db/db-changelog-master.yaml
