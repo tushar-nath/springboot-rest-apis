@@ -1,7 +1,10 @@
 # Springboot REST API project using Postgres Database
 This is a spring boot project that implements REST APIs such as POST, GET, PUT and DELETE. 
+
 It uses Postgres Database to store the data. The tables are automatically created when the program runs using Liquibase.
+
 To get more clarity, you can check the android app.
+
 App link: https://play.google.com/store/apps/details?id=com.liveasy.transport
 
 Here are some endpoints you can call :
