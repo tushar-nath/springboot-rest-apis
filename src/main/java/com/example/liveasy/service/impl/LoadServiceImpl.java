@@ -18,6 +18,7 @@ public class LoadServiceImpl implements LoadService {
     @Autowired
     public LoadRepository loadRepository;
 
+    //save load details
     @Override
     public String saveLoad(LoadDto loadDto) {
 
@@ -43,6 +44,7 @@ public class LoadServiceImpl implements LoadService {
 
     }
 
+    //get a list of all loads of a specific shipper
     @Override
     public List<Load> getListOfLoad(String shipperId) {
         List<Load> loadList = this.loadRepository.findByShipperId(shipperId);
@@ -52,6 +54,7 @@ public class LoadServiceImpl implements LoadService {
         return loadList;
     }
 
+    //get load details from a loadId
     @Override
     public Load getLoad(Long loadId) {
         final Optional<Load> optionalLoad = this.loadRepository.findByLoadId(loadId);
@@ -61,6 +64,7 @@ public class LoadServiceImpl implements LoadService {
         return optionalLoad.get();
     }
 
+    //update load details
     @Override
     public String updateLoad(Long loadId, LoadDto loadDto) {
         final Optional<Load> optionalLoad = this.loadRepository.findByLoadId(loadId);
@@ -88,6 +92,7 @@ public class LoadServiceImpl implements LoadService {
         return "Load details successfully updated.";
     }
 
+    //delete load details
     @Override
     public String deleteLoad(Long loadId) {
         final Optional<Load> optionalLoad = this.loadRepository.findByLoadId(loadId);
